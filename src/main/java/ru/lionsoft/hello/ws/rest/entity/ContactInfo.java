@@ -2,7 +2,7 @@
  * File:    ContactInfo.java
  * Project: HelloREST
  * Date:    28 июн. 2020 г. 11:14:37
- * Author:  Igor Morenko <morenko at lionsoft.ru>
+ * Author:  Igor Morenko <morenko@lionsoft.ru>
  * 
  * Copyright 2005-2020 LionSoft LLC. All rights reserved.
  */
@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- *
+ * Сущность ContactInfo
  * @author Igor Morenko morenko@lionsoft.ru
  */
 @Embeddable

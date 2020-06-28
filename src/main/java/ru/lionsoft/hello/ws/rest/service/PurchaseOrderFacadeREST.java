@@ -2,7 +2,7 @@
  * File:    PurchaseOrderFacadeREST.java
  * Project: HelloREST
  * Date:    28 июн. 2020 г. 11:14:37
- * Author:  Igor Morenko <morenko at lionsoft.ru>
+ * Author:  Igor Morenko <morenko@lionsoft.ru>
  * 
  * Copyright 2005-2020 LionSoft LLC. All rights reserved.
  */
@@ -25,7 +25,7 @@ import ru.lionsoft.hello.ws.rest.entity.PurchaseOrder;
 
 /**
  * Rest Web Service for entity {@code PurchaseOrder}
- * @author Igor Morenko <morenko at lionsoft.ru>
+ * @author Igor Morenko
  */
 @Stateless
 @Path("purchaseOrder")

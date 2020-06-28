@@ -2,7 +2,7 @@
  * File:    Manufacturer.java
  * Project: HelloREST
  * Date:    28 июн. 2020 г. 11:14:37
- * Author:  Igor Morenko <morenko at lionsoft.ru>
+ * Author:  Igor Morenko <morenko@lionsoft.ru>
  * 
  * Copyright 2005-2020 LionSoft LLC. All rights reserved.
  */
@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- *
- * @author Igor Morenko <morenko at lionsoft.ru>
+ * Сущность Manufacturer
+ * @author Igor Morenko
  */
 @Entity
 @Table(name = "MANUFACTURER")
