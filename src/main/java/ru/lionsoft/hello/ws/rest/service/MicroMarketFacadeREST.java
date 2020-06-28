@@ -21,11 +21,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import ru.lionsoft.hello.ws.rest.entity.Customer;
+import javax.ws.rs.core.Response;
 import ru.lionsoft.hello.ws.rest.entity.MicroMarket;
 
 /**
- *
+ * Rest Web Service for entity {@code MicroMarket}
  * @author Igor Morenko <morenko at lionsoft.ru>
  */
 @Stateless
@@ -69,8 +69,12 @@ public class MicroMarketFacadeREST extends AbstractFacade<MicroMarket> {
     @GET
     @Path("{id}/customers")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Customer> getCustomers(@PathParam("id") String id) {
-        return super.find(id).getCustomers();
+    public Response getCustomers(@PathParam("id") String id) {
+        MicroMarket micrpMarket = super.find(id);
+        if (micrpMarket == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+        else 
+            return Response.ok(micrpMarket.getCustomers()).build();
     }
 
     @GET

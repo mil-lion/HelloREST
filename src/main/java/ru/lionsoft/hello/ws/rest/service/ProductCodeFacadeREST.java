@@ -21,11 +21,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import ru.lionsoft.hello.ws.rest.entity.Product;
+import javax.ws.rs.core.Response;
 import ru.lionsoft.hello.ws.rest.entity.ProductCode;
 
 /**
- *
+ * Rest Web Service for entity {@code ProductCode}
  * @author Igor Morenko <morenko at lionsoft.ru>
  */
 @Stateless
@@ -69,8 +69,12 @@ public class ProductCodeFacadeREST extends AbstractFacade<ProductCode> {
     @GET
     @Path("{id}/products")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Product> getCustomers(@PathParam("id") String id) {
-        return super.find(id).getProducts();
+    public Response getProducts(@PathParam("id") String id) {
+        ProductCode productCode = super.find(id);
+        if (productCode == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+        else
+            return Response.ok(productCode.getProducts()).build();
     }
 
     @GET

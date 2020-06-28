@@ -21,12 +21,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import ru.lionsoft.hello.ws.rest.entity.Customer;
+import javax.ws.rs.core.Response;
 import ru.lionsoft.hello.ws.rest.entity.DiscountCode;
-import ru.lionsoft.hello.ws.rest.entity.ProductCode;
 
 /**
- *
+ * Rest Web Service for entity {@code DiscountCode}
  * @author Igor Morenko <morenko at lionsoft.ru>
  */
 @Stateless
@@ -70,15 +69,23 @@ public class DiscountCodeFacadeREST extends AbstractFacade<DiscountCode> {
     @GET
     @Path("{id}/customers")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Customer> getCustomers(@PathParam("id") String id) {
-        return super.find(id).getCustomers();
+    public Response getCustomers(@PathParam("id") String id) {
+        DiscountCode discountCode = super.find(id);
+        if (discountCode == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+        else 
+            return Response.ok(discountCode.getCustomers()).build();
     }
 
     @GET
     @Path("{id}/productCodes")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<ProductCode> getProductCodes(@PathParam("id") String id) {
-        return super.find(id).getProductCodes();
+    public Response getProductCodes(@PathParam("id") String id) {
+        DiscountCode discountCode = super.find(id);
+        if (discountCode == null)
+            return Response.status(Response.Status.NOT_FOUND).build();
+        else 
+            return Response.ok(discountCode.getProductCodes()).build();
     }
 
     @GET

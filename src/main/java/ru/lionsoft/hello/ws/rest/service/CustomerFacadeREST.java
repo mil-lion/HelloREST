@@ -22,11 +22,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import ru.lionsoft.hello.ws.rest.entity.Customer;
-import ru.lionsoft.hello.ws.rest.entity.PurchaseOrder;
 
 /**
- *
+ * Rest Web Service for entity {@code Customer}
  * @author Igor Morenko <morenko at lionsoft.ru>
  */
 @Stateless
@@ -71,8 +72,12 @@ public class CustomerFacadeREST extends AbstractFacade<Customer> {
     @GET
     @Path("{id}/purchaseOrders")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<PurchaseOrder> getPurchaseOrders(@PathParam("id") Integer id) {
-        return super.find(id).getPurchaseOrders();
+    public Response getPurchaseOrders(@PathParam("id") Integer id) {
+        Customer customer = super.find(id);
+        if (customer == null)
+            return Response.status(Status.NOT_FOUND).build();
+        else 
+            return Response.ok(customer.getPurchaseOrders()).build();
     }
 
     @GET

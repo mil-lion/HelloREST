@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
 import ru.lionsoft.hello.ws.rest.entity.Manufacturer;
 
 /**
- *
+ * Rest Web Service for entity {@code Manufacturer}
  * @author Igor Morenko morenko@lionsoft.ru
  */
 @Stateless

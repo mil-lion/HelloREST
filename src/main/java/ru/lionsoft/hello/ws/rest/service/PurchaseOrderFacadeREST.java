@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
 import ru.lionsoft.hello.ws.rest.entity.PurchaseOrder;
 
 /**
- *
+ * Rest Web Service for entity {@code PurchaseOrder}
  * @author Igor Morenko <morenko at lionsoft.ru>
  */
 @Stateless
